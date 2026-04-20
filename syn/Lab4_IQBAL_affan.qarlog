@@ -1,0 +1,37 @@
+Quartus Prime Archive log --	C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.qarlog
+
+Archive:	C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.qar
+Date:		Mon Apr 13 01:16:35 2026
+Quartus Prime		25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.qpf
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.qsf
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.tcl
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/Adder.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/ButtonShaper.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/Lab4_IQBAL_affan.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/LoadRegister.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/SevenSegmentDecoder.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/access_controller.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/access_fsm.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/countTo10.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/countTo100.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/digit2_timer.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/digit_timer.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/ms_timer.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/ms_timer_lfsr.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/num_gen.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/one_sec_timer.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/src/timer_fsm.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/sim/ROM_PSWD.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/syn.qip
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/syn.v
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/syn/Lab4_IQBAL_affan.hex
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/syn/Lab4_IQBAL_affan.mif
+C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/syn/PSWD_ROM/syn_bb.v
+c:/altera_lite/25.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 26 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

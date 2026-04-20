@@ -1,0 +1,102 @@
+Archive Project report for Lab4_IQBAL_affan
+Mon Apr 13 01:16:36 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Mon Apr 13 01:16:36 2026 ;
+; Revision Name          ; Lab4_IQBAL_affan                      ;
+; Top-level Entity Name  ; Lab4_IQBAL_affan                      ;
+; Family                 ; Cyclone V                             ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Warning: Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver
+Info: Archive will store files relative to the closest common parent directory
+Info (13213): Using common directory C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/Users/affan/Desktop/add/Lab4_IQBAL_affan/Lab4_IQBAL_affan.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'Lab4_IQBAL_affan.archive.rpt'
+Info (23030): Evaluation of Tcl script c:/altera_lite/25.1std/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4874 megabytes
+    Info: Processing ended: Mon Apr 13 01:16:36 2026
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++--------------------------------------------------------------+
+; Files Archived                                               ;
++--------------------------------------------------------------+
+; File Name                                                    ;
++--------------------------------------------------------------+
+; c:/altera_lite/25.1std/quartus/bin64/assignment_defaults.qdf ;
+; Lab4_IQBAL_affan.qpf                                         ;
+; Lab4_IQBAL_affan.qsf                                         ;
+; Lab4_IQBAL_affan.tcl                                         ;
+; src/access_controller.v                                      ;
+; src/access_fsm.v                                             ;
+; src/Adder.v                                                  ;
+; src/ButtonShaper.v                                           ;
+; src/countTo10.v                                              ;
+; src/countTo100.v                                             ;
+; src/digit2_timer.v                                           ;
+; src/digit_timer.v                                            ;
+; src/Lab4_IQBAL_affan.v                                       ;
+; src/LoadRegister.v                                           ;
+; src/ms_timer.v                                               ;
+; src/ms_timer_lfsr.v                                          ;
+; src/num_gen.v                                                ;
+; src/one_sec_timer.v                                          ;
+; src/SevenSegmentDecoder.v                                    ;
+; src/timer_fsm.v                                              ;
+; syn/PSWD_ROM/sim/ROM_PSWD.v                                  ;
+; syn/PSWD_ROM/syn.qip                                         ;
+; syn/PSWD_ROM/syn.v                                           ;
+; syn/PSWD_ROM/syn/Lab4_IQBAL_affan.hex                        ;
+; syn/PSWD_ROM/syn/Lab4_IQBAL_affan.mif                        ;
+; syn/PSWD_ROM/syn_bb.v                                        ;
++--------------------------------------------------------------+
+
+
