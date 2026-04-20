@@ -1,0 +1,26 @@
+// ECE5440 / ECE6370 – Lab 3
+// Author: Affan Iqbal, UH ID: 2431388
+// True Random Number Generator 
+
+module num_gen(
+    input  wire clk,        // <-- REQUIRED
+    input  wire rst,         
+    input  wire rng_gen,    
+    output reg  [3:0] number
+);
+
+    always @(posedge clk) begin
+        if (!rst) begin
+            number <= 4'd0;
+        end
+        else begin
+            if (!rng_gen) begin
+                if (number == 4'd15)
+                    number <= 4'd0;
+                else
+                    number <= number + 1;
+            end
+        end
+    end
+
+endmodule

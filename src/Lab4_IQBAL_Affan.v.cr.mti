@@ -1,0 +1,57 @@
+C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/access_fsm.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/access_fsm.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module access_fsm
+
+Top level modules:
+	access_fsm
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/ButtonShaper.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/ButtonShaper.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ButtonShaper
+
+Top level modules:
+	ButtonShaper
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/digit2_timer.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/digit2_timer.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module digit2_timer
+
+Top level modules:
+	digit2_timer
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/Adder.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/Adder.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module FourBitAdder
+
+Top level modules:
+	FourBitAdder
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/access_controller.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/access_controller.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module access_controller
+
+Top level modules:
+	access_controller
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/countTo10.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/countTo10.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module countTo10
+
+Top level modules:
+	countTo10
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/countTo100.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/countTo100.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module countTo100
+
+Top level modules:
+	countTo100
+
+} {} {}} C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/digit_timer.v {1 {vlog -work work -stats=none C:/Users/affan/Desktop/add/Lab4_IQBAL_Affan/src/digit_timer.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module digit_timer
+
+Top level modules:
+	digit_timer
+
+} {} {}}

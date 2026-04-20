@@ -1,0 +1,60 @@
+/* Lab 3 – Digit Timer (Single BCD Digit)
+   Author: Affan Iqbal
+   UH ID: 2431388
+*/
+
+module digit_timer (
+    input  wire clk,
+    input  wire rst,            // active-low reset
+    input  wire reconfig,       // load digit = 9
+    input  wire borrow_down,    // request to count down
+    input  wire no_borrow_up,   // 1 = lower digit did NOT need a borrow
+
+    output reg  no_borrow_down, // 1 = this digit did NOT need a borrow
+    output reg  borrow_up,      // 1 = this digit wrapped 0 → 9
+    output reg  [3:0] digit     // current BCD digit
+);
+
+    always @(posedge clk) begin
+        
+        // Highest priority: reset
+        if (!rst) begin
+            digit          <= 4'd0;
+            no_borrow_down <= 1'b1;
+            borrow_up      <= 1'b0;
+        end
+
+        // Next priority: reconfig → load 9
+        else if (reconfig) begin
+            digit          <= 4'd9;
+            no_borrow_down <= 1'b1;
+            borrow_up      <= 1'b0;
+        end
+
+        // Borrow-down request (only if lower digit needs a borrow)
+        else if (borrow_down && !no_borrow_up) begin
+            
+            // Case 1: digit = 0 → wrap to 9 and assert borrow_up
+            if (digit == 4'd0) begin
+                digit          <= 4'd9;
+                borrow_up      <= 1'b1;   // tell higher digit to borrow
+                no_borrow_down <= 1'b0;   // this digit DID need a borrow
+            end
+            
+            // Case 2: digit > 0 → normal decrement
+            else begin
+                digit          <= digit - 4'd1;
+                borrow_up      <= 1'b0;
+                no_borrow_down <= 1'b1;   // no borrow needed
+            end
+        end
+
+        // No action → default outputs
+        else begin
+            no_borrow_down <= 1'b1;
+            borrow_up      <= 1'b0;
+        end
+    end
+
+endmodule
+

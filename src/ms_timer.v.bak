@@ -1,0 +1,29 @@
+/*HW-5
+Affan Iqbal
+UH ID:2431388*/
+module ms_timer (
+    input  wire clk,
+    input  wire rst,     
+    input  wire en,
+    output reg  timeout_out
+);
+    reg [15:0] tick_reg; 
+
+    always @(posedge clk) begin
+        if (rst == 1'b0) begin
+            tick_reg    <= 0;
+            timeout_out <= 0;
+        end else begin
+		timeout_out<=1'b0;
+            if (en) begin
+                if (tick_reg == 16'd49999) begin
+                    tick_reg    <= 0;
+                    timeout_out <= 1;
+                end else begin
+                    tick_reg    <= tick_reg + 1;
+     
+                end
+            end 
+            end
+        end 
+endmodule

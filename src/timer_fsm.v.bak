@@ -1,0 +1,41 @@
+module timer_fsm(
+    input  wire clk,
+    input  wire rst,
+
+    input  wire go_reconfig,
+    input  wire go_wait,
+    input  wire go_gameplay,
+    input  wire go_gameover,
+
+    output reg  timer_reconfig,
+    output reg  timer_enable
+);
+
+    always @(posedge clk) begin
+        if (!rst) begin
+            timer_reconfig <= 0;
+            timer_enable   <= 0;
+        end
+        else begin
+
+            // default
+            timer_reconfig <= 0;
+
+            if (go_reconfig) begin
+                timer_reconfig <= 1;   // 1‑cycle pulse
+                timer_enable   <= 0;
+            end
+            else if (go_wait) begin
+                timer_enable <= 0;
+            end
+            else if (go_gameplay) begin
+                timer_enable <= 1;
+            end
+            else if (go_gameover) begin
+                timer_enable <= 0;
+            end
+
+        end
+    end
+
+endmodule

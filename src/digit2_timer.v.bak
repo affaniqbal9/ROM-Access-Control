@@ -1,0 +1,78 @@
+/*HW-5
+Affan Iqbal
+UH ID:2431388
+Two-digit countdown timer with pass_in and enable_timer
+*/
+
+module digit2_timer (
+    input  wire clk,
+    input  wire rst,             // active-low reset
+    input  wire pass_in,         // load 99
+    input  wire enable_timer,    // allow countdown
+    input  wire borrow_down,     // external 1-second pulse
+    input  wire no_borrow_up,    // higher-level borrow permission
+
+    output wire no_borrow_down,  // overall no-borrow-down (from ones digit)
+    output wire timeout,         // asserted when 00 reached and wrapped
+    output wire [3:0] tens,
+    output wire [3:0] ones
+);
+
+    // Internal borrow signals
+    wire ones_no_borrow_down;
+    wire ones_borrow_up;
+
+    wire tens_no_borrow_down;
+    wire tens_borrow_up;
+
+    // Internal reconfig signal for both digits
+    reg reconfig_digits;
+
+    always @(posedge clk) begin
+        if (!rst)
+            reconfig_digits <= 1'b0;
+        else if (pass_in)
+            reconfig_digits <= 1'b1;   // load 99
+        else
+            reconfig_digits <= 1'b0;
+    end
+
+    // ------------------------------
+    // Ones digit
+    // ------------------------------
+    digit_timer ones_digit (
+        clk,
+        rst,
+        reconfig_digits,
+        borrow_down,
+        no_borrow_up,
+        ones_no_borrow_down,
+        ones_borrow_up,
+        ones
+    );
+
+    // ------------------------------
+    // Tens digit
+    // ------------------------------
+    digit_timer tens_digit (
+        clk,
+        rst,
+        reconfig_digits,
+        ones_borrow_up,
+        no_borrow_up,
+        tens_no_borrow_down,
+        tens_borrow_up,
+        tens
+    );
+
+    // ------------------------------
+    // Module-level outputs
+    // ------------------------------
+
+    // Overall no-borrow-down comes from ONES digit
+    assign no_borrow_down = ones_no_borrow_down;
+
+    // Timeout when tens digit wraps (00 → 99)
+    assign timeout = tens_borrow_up;
+
+endmodule

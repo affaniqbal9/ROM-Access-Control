@@ -1,0 +1,159 @@
+module access_fsm(
+    input        clk,
+    input        rst,
+    input        enter_pulse,
+    input        rng_in,
+    input        load_in,
+    input  [3:0] digit_in,
+    input        timeout,
+    input        op,
+
+    output reg   authenticated,
+    output reg   not_authenticated,
+    output reg   rng_out,
+    output reg   load_out,
+
+    // NEW: signals to timer FSM
+    output reg   go_reconfig,
+    output reg   go_wait,
+    output reg   go_gameplay,
+    output reg   go_gameover
+);
+
+    reg [3:0] p1, p2, p3, p4;
+
+    // FSM states
+    parameter s0 = 4'b0000;
+    parameter s1 = 4'b0001;
+    parameter s2 = 4'b0010;
+    parameter s3 = 4'b0011;
+    parameter check = 4'b0100;
+    parameter reconfig_timer = 4'b0101;
+    parameter wait_game_start = 4'b0110;
+    parameter gameplay = 4'b0111;
+    parameter game_over = 4'b1000;
+
+    reg [3:0] current_state;
+
+    always @(posedge clk) begin
+        if (!rst) begin
+            current_state     <= s0;
+            authenticated     <= 0;
+            not_authenticated <= 1;
+
+            rng_out           <= 1;
+            load_out          <= 0;
+
+            go_reconfig       <= 0;
+            go_wait           <= 0;
+            go_gameplay       <= 0;
+            go_gameover       <= 0;
+
+            p1 <= 0; p2 <= 0; p3 <= 0; p4 <= 0;
+        end
+        else begin
+
+            // default outputs
+            go_reconfig  <= 0;
+            go_wait      <= 0;
+            go_gameplay  <= 0;
+            go_gameover  <= 0;
+
+            case (current_state)
+
+                s0: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    if (enter_pulse) begin
+                        p1 <= digit_in;
+                        current_state <= s1;
+                    end
+                end
+
+                s1: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    if (enter_pulse) begin
+                        p2 <= digit_in;
+                        current_state <= s2;
+                    end
+                end
+
+                s2: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    if (enter_pulse) begin
+                        p3 <= digit_in;
+                        current_state <= s3;
+                    end
+                end
+
+                s3: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    if (enter_pulse) begin
+                        p4 <= digit_in;
+                        current_state <= check;
+                    end
+                end
+
+                check: begin
+                    if (p1==4'd1 && p2==4'd3 && p3==4'd8 && p4==4'd8) begin
+                        authenticated     <= 1;
+                        not_authenticated <= 0;
+                        current_state     <= reconfig_timer;
+                    end
+                    else begin
+                        authenticated     <= 0;
+                        not_authenticated <= 1;
+                        current_state     <= s0;
+                    end
+                end
+
+                reconfig_timer: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    go_reconfig <= 1;   // tell timer FSM to pulse reconfig
+                    current_state <= wait_game_start;
+                end
+
+                wait_game_start: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    go_wait <= 1;
+
+                    if (enter_pulse)
+                        current_state <= gameplay;
+                end
+
+                gameplay: begin
+                    rng_out  <= rng_in;
+                    load_out <= load_in;
+
+                    go_gameplay <= 1;
+
+                    if (timeout)
+                        current_state <= game_over;
+                end
+
+                game_over: begin
+                    rng_out  <= 1;
+                    load_out <= 0;
+
+                    go_gameover <= 1;
+
+                    if (enter_pulse)
+                        current_state <= reconfig_timer;
+                end
+
+            endcase
+        end
+    end
+
+endmodule

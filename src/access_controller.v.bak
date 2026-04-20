@@ -1,0 +1,154 @@
+// ECE5440 / ECE6370 – Lab 3
+// Author: Affan Iqbal, UH ID: 2431388
+// Module: access_controller
+// Description:
+//   Lab 3 Access Controller with password verification, timer control,
+//   RNG gating, LOAD gating, and game state management.
+
+module access_controller(
+    input        clk,
+    input        rst,               // active-low
+    input        enter_pulse,       // password/game button
+    input        rng_in,            // RNG button (raw)
+    input        load_in,           // LOAD button
+    input  [3:0] digit_in,          // password digit
+    input        timeout,           // from digit timer
+
+    output reg   authenticated,
+    output reg   not_authenticated,
+    output reg   rng_out,
+    output reg   load_out,
+    output reg   timer_reconfig,    // 1-cycle pulse
+    output reg   timer_enable       // 1 = timer running
+);
+
+    // Password storage
+    reg [3:0] p1, p2, p3, p4;
+
+    // FSM states
+    parameter s0             = 4'b0000;
+    parameter s1             = 4'b0001;
+    parameter s2             = 4'b0010;
+    parameter s3             = 4'b0011;
+    parameter check          = 4'b0100;
+    parameter reconfig_timer = 4'b0101;
+    parameter wait_game_start= 4'b0110;
+    parameter gameplay       = 4'b0111;
+    parameter game_over      = 4'b1000;
+
+    reg [3:0] current_state;
+
+    always @(posedge clk) begin
+        
+        // RESET
+        if (!rst) begin
+            current_state     <= s0;
+            authenticated     <= 0;
+            not_authenticated <= 1;
+            rng_out           <= 1;   // block RNG
+            load_out          <= 1;   // block LOAD
+            timer_reconfig    <= 0;
+            timer_enable      <= 0;
+            p1 <= 0; p2 <= 0; p3 <= 0; p4 <= 0;
+        end
+
+        else begin
+            // Default outputs
+            timer_reconfig <= 0;
+
+            case (current_state)
+
+                // --------------------------
+                // PASSWORD ENTRY STATES
+                // --------------------------
+                s0: if (enter_pulse) begin
+                        p1 <= digit_in;
+                        current_state <= s1;
+                    end
+
+                s1: if (enter_pulse) begin
+                        p2 <= digit_in;
+                        current_state <= s2;
+                    end
+
+                s2: if (enter_pulse) begin
+                        p3 <= digit_in;
+                        current_state <= s3;
+                    end
+
+                s3: if (enter_pulse) begin
+                        p4 <= digit_in;
+                        current_state <= check;
+                    end
+
+                // --------------------------
+                // CHECK PASSWORD
+                // --------------------------
+                check: begin
+                    if (p1==4'd1 && p2==4'd3 && p3==4'd8 && p4==4'd8) begin
+                        authenticated     <= 1;
+                        not_authenticated <= 0;
+                        rng_out           <= rng_in;   // allow RNG
+                        load_out          <= load_in;  // allow LOAD
+                        current_state     <= reconfig_timer;
+                    end
+                    else begin
+                        authenticated     <= 0;
+                        not_authenticated <= 1;
+                        current_state     <= s0;
+                    end
+                end
+
+                // --------------------------
+                // RECONFIG TIMER (1 cycle)
+                // --------------------------
+                reconfig_timer: begin
+                    timer_reconfig <= 1;   // pulse
+                    timer_enable   <= 0;   // timer off
+                    current_state  <= wait_game_start;
+                end
+
+                // --------------------------
+                // WAIT FOR GAME START
+                // --------------------------
+                wait_game_start: begin
+                    timer_enable <= 0;
+                    if (enter_pulse) begin
+                        timer_enable <= 1;     // start timer
+                        current_state <= gameplay;
+                    end
+                end
+
+                // --------------------------
+                // GAMEPLAY
+                // --------------------------
+                gameplay: begin
+                    rng_out  <= rng_in;   // pass buttons
+                    load_out <= load_in;
+
+                    if (timeout) begin
+                        timer_enable <= 0;
+                        current_state <= game_over;
+                    end
+                end
+
+                // --------------------------
+                // GAME OVER
+                // --------------------------
+                game_over: begin
+                    rng_out  <= 1;   // block buttons
+                    load_out <= 1;
+
+                    if (enter_pulse) begin
+                        current_state <= reconfig_timer;
+                    end
+                end
+
+                default: current_state <= s0;
+
+            endcase
+        end
+    end
+
+endmodule
+
