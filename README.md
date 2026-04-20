@@ -28,9 +28,10 @@ This project implements a complete access control system on the DE10 FPGA using 
 - Fully synthesized and tested on the DE10‑Lite FPGA board  
 
 ## Topics (Tags)
-verilog • fpga • quartus • modelsim • rom • lfsr • access-control • digital-design • hardware • password-authentication • de10-lite
+verilog • fpga • quartus • modelsim • rom • lfsr • access-control • digital-design • hardware • password-authentication • de
 
 ## Author
 Affan Iqbal  
-Spring 2026 – ECE 5440/6370
+Spring 2026 – ECE 6370
+https://www.linkedin.com/in/affaniqbal9/
 
