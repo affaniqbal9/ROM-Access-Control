@@ -1,8 +1,5 @@
 /*LoadRegister
-Affan Iqbal
-UH ID:2431388*//*LoadRegister
-Affan Iqbal
-UH ID:2431388*/
+Affan Iqbal */
 module LoadRegister(D_in, D_out, clk, rst, Load);
 	input [3:0] D_in;
 	output [3:0] D_out;

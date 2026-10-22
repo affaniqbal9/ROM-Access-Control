@@ -1,6 +1,5 @@
 /*ms_timer
-Affan Iqbal
-UH ID:2431388*/
+Affan Iqbal */
 module ms_timer (
     		input  wire clk,
 		input  wire rst,

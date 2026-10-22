@@ -1,5 +1,5 @@
 /* Seven Segment Decoder
-Affan Iqbal | UH ID:2431388*/
+Affan Iqbal */
 
 /*      ---a---
        |       |

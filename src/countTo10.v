@@ -1,6 +1,5 @@
 /*HW-5
-Affan Iqbal
-UH ID:2431388*/
+Affan Iqbal */
 module countTo10 (
     input  wire clk,
     input  wire rst,     

@@ -21,7 +21,7 @@ module access_fsm(
     reg  [4:0] rom_addr;
     wire [3:0] rom_digit;
 
-    rom_PSWD rom (
+    ROM_PSWD rom (
         .address(rom_addr),
         .clock(clk),
         .q(rom_digit)

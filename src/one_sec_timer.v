@@ -1,6 +1,5 @@
 /*HW-5
 Affan Iqbal
-UH ID:2431388
 Top module*/
 module one_sec_timer (
     input  wire clk,

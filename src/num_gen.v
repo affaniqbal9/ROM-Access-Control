@@ -1,6 +1,5 @@
 /*Number Generator
-Affan Iqbal
-UH ID:2431388*/
+Affan Iqbal */
 module num_gen(
     input  wire clk,        
     input  wire rst,         
